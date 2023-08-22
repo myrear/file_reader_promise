@@ -1,0 +1,17 @@
+{
+  "tasks": {
+    "build": "deno run -A npm_build.ts"
+  },
+  "fmt": {
+    "semiColons": false,
+    "singleQuote": true,
+    "exclude": ["*.md"]
+  },
+  "exclude": ["npm/**/*"],
+  "imports": {
+    "dnt/": "https://deno.land/x/dnt@0.38.1/",
+    "std/": "https://deno.land/std@0.199.0/",
+    "jsdom": "https://esm.sh/jsdom@22.1.0",
+    "which_runtime/": "https://deno.land/x/which_runtime@0.2.0/"
+  }
+}
