@@ -29,13 +29,13 @@ This library provides 2 modules:
 ### `readAs`
 
 ```ts
-const result: string = await readAs(reader, file, 'DataURL')
-const result: ArrayBuffer = await readAs(reader, file, 'ArrayBuffer')
+const dataUrl: string = await readAs(reader, file, 'DataURL')
+const arrayBuffer: ArrayBuffer = await readAs(reader, file, 'ArrayBuffer')
 ```
 
 ### `FileReader`
 
 ```ts
-const result: string = await new FileReader().readAsDataURL(file)
-const result: ArrayBuffer = await new FileReader().readAsArrayBuffer(file)
+const dataUrl: string = await new FileReader().readAsDataURL(file)
+const arrayBuffer: ArrayBuffer = await new FileReader().readAsArrayBuffer(file)
 ```
