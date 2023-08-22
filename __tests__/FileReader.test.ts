@@ -1,5 +1,5 @@
 import './setup.ts'
-import { FileReader } from '../src/FileReader.ts'
+import { FileReader } from '../mod.ts'
 import { assertEquals } from 'std/assert/assert_equals.ts'
 import { assertInstanceOf } from 'std/assert/assert_instance_of.ts'
 

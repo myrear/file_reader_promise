@@ -1,7 +1,7 @@
 import './setup.ts'
 import { assertEquals, assertInstanceOf } from 'std/assert/mod.ts'
 import { assertSpyCall, spy } from 'std/testing/mock.ts'
-import { readAs } from '../src/readAs.ts'
+import { readAs } from '../mod.ts'
 
 Deno.test('read blob', async (t) => {
   const blob = new Blob(['foo'], { type: 'text/plain' })

@@ -3,7 +3,7 @@ import { build, emptyDir } from 'dnt/mod.ts'
 await emptyDir('./npm')
 
 await build({
-  entryPoints: ['./src/mod.ts'],
+  entryPoints: ['./mod.ts'],
   outDir: './npm',
   shims: {
     deno: { test: 'dev' },
