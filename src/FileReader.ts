@@ -1,27 +1,19 @@
-import { promisifyReader } from './promisifyReader.ts'
+import { readAs } from './readAs.ts'
 
 export class FileReader extends globalThis.FileReader {
-  readAsArrayBuffer(blob: Blob): Promise<ArrayBuffer>
   readAsArrayBuffer(blob: Blob) {
-    super.readAsArrayBuffer(blob)
-    return promisifyReader(this)
+    return readAs(this, blob, 'ArrayBuffer')
   }
 
-  readAsBinaryString(blob: Blob): Promise<string>
   readAsBinaryString(blob: Blob) {
-    super.readAsBinaryString(blob)
-    return promisifyReader(this)
+    return readAs(this, blob, 'BinaryString')
   }
 
-  readAsDataURL(blob: Blob): Promise<string>
   readAsDataURL(blob: Blob) {
-    super.readAsDataURL(blob)
-    return promisifyReader(this)
+    return readAs(this, blob, 'DataURL')
   }
 
-  readAsText(blob: Blob, encoding?: string): Promise<string>
   readAsText(blob: Blob, encoding?: string) {
-    super.readAsText(blob, encoding)
-    return promisifyReader(this)
+    return readAs(this, blob, 'Text', encoding)
   }
 }

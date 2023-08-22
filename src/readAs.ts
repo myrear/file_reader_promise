@@ -1,5 +1,3 @@
-import { promisifyReader } from './promisifyReader.ts'
-
 export function readAs(
   reader: FileReader,
   blob: Blob,
@@ -25,6 +23,22 @@ export function readAs(
   as: 'ArrayBuffer' | 'DataURL' | 'Text' | 'BinaryString',
   encoding?: string,
 ) {
-  reader[`readAs${as}`](blob, encoding)
-  return promisifyReader(reader)
+  return new Promise<FileReader['result']>((resolve, reject) => {
+    reader.addEventListener('load', loadListener)
+    reader.addEventListener('error', reject)
+    reader.addEventListener('abort', reject)
+    reader.addEventListener('loadend', removeEventListener)
+    FileReader.prototype[`readAs${as}`].call(reader, blob, encoding)
+
+    function removeEventListener() {
+      reader.removeEventListener('load', loadListener)
+      reader.removeEventListener('error', reject)
+      reader.removeEventListener('abort', reject)
+      reader.removeEventListener('loadend', removeEventListener)
+    }
+
+    function loadListener() {
+      resolve(reader.result)
+    }
+  })
 }
